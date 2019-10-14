@@ -30,10 +30,14 @@ export default function Manin() {
 
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites);
+  const loading = useSelector((state) => state.loading);
 
   function handleAddRepository(event) {
     event.preventDefault();
     dispatch(addFavoreteRequest(repositoryInput));
+    if (loading) {
+      setRespositoryInput('');
+    }
   }
 
   return (
@@ -45,16 +49,9 @@ export default function Manin() {
           onChange={(e) => setRespositoryInput(e.target.value)}
         />
         <Button variant="contained" type="submit">OK</Button>
-      </form>
 
-      {/* <ul>
-        <li>
-          <p>
-            <strong>facebook/react</strong>
-            <a href="">Acessar</a>
-          </p>
-        </li>
-      </ul> */}
+        {loading && <span>Carregando ...</span>}
+      </form>
 
       {favorites.map((fav) => (
         <Card key={fav.id} className={classes.card}>
