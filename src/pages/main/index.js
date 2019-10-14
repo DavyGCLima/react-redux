@@ -31,6 +31,7 @@ export default function Manin() {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites);
   const loading = useSelector((state) => state.loading);
+  const error = useSelector((state) => state.error);
 
   function handleAddRepository(event) {
     event.preventDefault();
@@ -51,6 +52,8 @@ export default function Manin() {
         <Button variant="contained" type="submit">OK</Button>
 
         {loading && <span>Carregando ...</span>}
+
+        {!!error && <span>{error}</span>}
       </form>
 
       {favorites.map((fav) => (

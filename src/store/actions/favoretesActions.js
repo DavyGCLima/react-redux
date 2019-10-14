@@ -5,3 +5,7 @@ export function addFavoreteRequest(repository) {
 export function addFavoreteSuccess(data) {
   return { type: 'ADD_FAVORETE_SUCCESS', payload: { data } };
 }
+
+export function addFavoreteFailure(error) {
+  return { type: 'ADD_FAVORETE_FAILUERE', payload: { error } };
+}
